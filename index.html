@@ -317,7 +317,7 @@
       }
 
       .type-text {
-        min-width: 8.2em;
+        min-width: 0;
         white-space: nowrap;
       }
 
@@ -1426,9 +1426,9 @@
             <span>YUTONG</span>
           </h1>
           <div class="intro-meta" aria-label="personal tags">
-            <span class="intro-pill type-pill is-active" data-type-items="AI产品经理|拜仁十年死忠|乐观生活家">
+            <span class="intro-pill type-pill is-active" data-type-items="AI产品经理 💻|拜仁十年死忠 ⚽|乐观生活家 😊">
               <span class="type-prefix">I'M ALSO</span>
-              <span class="type-text">AI产品经理</span><span class="type-cursor">|</span>
+              <span class="type-text">AI产品经理 💻</span><span class="type-cursor">|</span>
             </span>
           </div>
         </div>
@@ -1929,25 +1929,33 @@
           .split("|")
           .map((item) => item.trim())
           .filter(Boolean);
+        const splitTextUnits = (text) => {
+          if (typeof Intl !== "undefined" && Intl.Segmenter) {
+            const segmenter = new Intl.Segmenter("zh-CN", { granularity: "grapheme" });
+            return Array.from(segmenter.segment(text), ({ segment }) => segment);
+          }
+          return Array.from(text);
+        };
 
         if (typeTextElement && typeItems.length > 0) {
           let activeItemIndex = 0;
           let activeCharIndex = 0;
           let deleting = false;
+          const typeUnits = typeItems.map(splitTextUnits);
 
           const setTypeText = (textLength = 0) => {
-            const fullText = typeItems[activeItemIndex] || "";
-            typeTextElement.textContent = fullText.slice(0, textLength);
+            const fullUnits = typeUnits[activeItemIndex] || [];
+            typeTextElement.textContent = fullUnits.slice(0, textLength).join("");
           };
 
           const runTypewriter = () => {
-            const targetText = typeItems[activeItemIndex] || "";
+            const targetUnits = typeUnits[activeItemIndex] || [];
 
             if (!deleting) {
               activeCharIndex += 1;
               setTypeText(activeCharIndex);
 
-              if (activeCharIndex < targetText.length) {
+              if (activeCharIndex < targetUnits.length) {
                 window.setTimeout(runTypewriter, 120);
                 return;
               }
