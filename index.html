@@ -213,31 +213,6 @@
         max-width: 620px;
       }
 
-      .intro-kicker {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 16px;
-        border-radius: 999px;
-        color: rgba(25, 50, 75, 0.8);
-        background: rgba(255, 255, 255, 0.58);
-        border: 1px solid rgba(88, 116, 149, 0.12);
-        box-shadow: 0 10px 24px rgba(69, 91, 125, 0.08);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-size: 0.76rem;
-        font-weight: 700;
-      }
-
-      .intro-kicker::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #7ab6ff, #b286ff);
-        box-shadow: 0 0 18px rgba(144, 120, 255, 0.9);
-      }
-
       .intro-title {
         margin: 26px 0 0;
         color: #0f2237;
@@ -250,6 +225,28 @@
 
       .intro-title span {
         display: block;
+        width: fit-content;
+        max-width: 100%;
+        color: #0f2237;
+        transition:
+          color 0.28s ease,
+          letter-spacing 0.28s ease,
+          text-shadow 0.28s ease,
+          transform 0.28s ease;
+      }
+
+      .intro-title:hover span {
+        color: #0f2237;
+        text-shadow: none;
+      }
+
+      .intro-title span:hover {
+        color: #7d73ff;
+        letter-spacing: 0.015em;
+        text-shadow:
+          0 0 14px rgba(125, 115, 255, 0.28),
+          0 0 30px rgba(120, 199, 255, 0.2);
+        transform: translateX(4px);
       }
 
       .intro-meta {
@@ -380,18 +377,6 @@
         pointer-events: none;
       }
 
-      .intro-caption {
-        position: absolute;
-        right: 0;
-        bottom: 30px;
-        max-width: 220px;
-        color: rgba(44, 68, 98, 0.64);
-        font-size: 0.88rem;
-        line-height: 1.8;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-      }
-
       @keyframes orbPulse {
         0%, 100% {
           transform: translate(-50%, -50%) scale(0.9);
@@ -451,31 +436,18 @@
       }
 
       .brand::before {
-        content: "Liang Yutong";
-        position: relative;
-        display: inline-block;
-        padding: 4px 2px 10px;
-        color: var(--primary-deep);
-        font-family: "Times New Roman", "Georgia", serif;
-        font-size: clamp(1.28rem, 2vw, 1.7rem);
-        font-style: italic;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        line-height: 1;
+        content: none;
       }
 
       .brand::after {
-        content: "";
-        position: absolute;
-        left: 2px;
-        width: 100%;
-        max-width: 210px;
-        bottom: 3px;
-        height: 10px;
-        border-bottom: 2px solid rgba(122, 143, 255, 0.34);
-        border-radius: 999px;
-        transform: skewX(-24deg);
+        content: none;
+      }
+
+      .brand-signature-image {
+        display: block;
+        width: auto;
+        height: clamp(34px, 4vw, 50px);
+        object-fit: contain;
       }
 
       .nav-links {
@@ -1229,12 +1201,6 @@
           min-height: 320px;
         }
 
-        .intro-caption {
-          right: auto;
-          left: 0;
-          bottom: 4px;
-        }
-
         .moments-stage {
           min-height: 480px;
         }
@@ -1290,14 +1256,6 @@
         .intro-portrait {
           left: 50%;
           width: min(48vw, 220px);
-        }
-
-        .intro-caption {
-          position: static;
-          max-width: none;
-          margin-top: 8px;
-          font-size: 0.76rem;
-          line-height: 1.6;
         }
 
         .container {
@@ -1461,7 +1419,6 @@
     <section class="intro-hero" id="home" aria-label="LIANG YUTONG brand intro">
       <div class="intro-shell">
         <div class="intro-copy">
-          <div class="intro-kicker">Personal Brand Intro</div>
           <h1 class="intro-title" aria-label="Hello I'm Liang Yutong">
             <span>HELLO</span>
             <span>I'M</span>
@@ -1478,8 +1435,7 @@
 
         <div class="intro-visual" aria-hidden="true">
           <div class="intro-orb"></div>
-          <img class="intro-portrait" src="intro-portrait-sketch-cutout.png" alt="" />
-          <div class="intro-caption">Young energy, product thinking, football passion.</div>
+          <img class="intro-portrait" src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/intro-portrait-sketch-cutout.png" alt="" />
         </div>
       </div>
     </section>
@@ -1488,6 +1444,7 @@
     <header class="site-header">
       <div class="container navbar">
         <a class="brand" href="#home" aria-label="返回首页">
+          <img class="brand-signature-image" src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/signature-liang-yutong-clean.png" alt="LIANG YUTONG signature" />
           <div class="brand-badge">O</div>
           <div class="brand-text">
             <strong data-edit-key="brand_name">梁羽童（Oliver）</strong>
@@ -1514,7 +1471,6 @@
       <section class="hero container">
         <div class="hero-panel reveal">
           <div class="hero-content">
-            <div class="eyebrow" data-edit-key="hero_eyebrow">年轻活力 · 简洁清爽 · 亲和自然</div>
             <h1 class="hero-title" data-edit-key="hero_name">梁羽童（Oliver）</h1>
             <p class="hero-subtitle" data-edit-key="hero_subtitle">爱踢足球的产品经理</p>
             <p class="hero-description" data-edit-key="hero_intro">
@@ -1542,7 +1498,7 @@
               <div class="avatar-placeholder" aria-label="头像占位图">
                 <img
                   class="avatar-photo"
-                  src="portrait-oliver.png"
+                  src="https://raw.githubusercontent.com/yutongliang38-byte/my-image-bed/main/images/portrait-oliver.png"
                   alt="梁羽童（Oliver）的个人照片"
                 />
               </div>
@@ -1596,22 +1552,22 @@
 
             <div class="moments-stage" id="moments-stage" data-active="2">
               <button class="moment-card is-active" type="button" data-index="0" data-label="夜宵时刻">
-                <img src="photo-1.jpg" alt="在餐馆吃烧鸟的照片" />
+                <img src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/photo-1.jpg" alt="在餐馆吃烧鸟的照片" />
               </button>
               <button class="moment-card" type="button" data-index="1" data-label="海边发呆">
-                <img src="photo-2.jpg" alt="在海边礁石旁的照片" />
+                <img src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/photo-2.jpg" alt="在海边礁石旁的照片" />
               </button>
               <button class="moment-card" type="button" data-index="2" data-label="足球场上">
-                <img src="photo-3.jpg" alt="在足球场上的照片" />
+                <img src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/photo-3.jpg" alt="在足球场上的照片" />
               </button>
               <button class="moment-card" type="button" data-index="3" data-label="快乐一下">
-                <img src="photo-4.jpg" alt="抱着乐器微笑的照片" />
+                <img src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/photo-4.jpg" alt="抱着乐器微笑的照片" />
               </button>
               <button class="moment-card" type="button" data-index="4" data-label="山野状态">
-                <img src="photo-5.jpg" alt="在山上徒步的照片" />
+                <img src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/photo-5.jpg" alt="在山上徒步的照片" />
               </button>
               <button class="moment-card" type="button" data-index="5" data-label="路上的我">
-                <img src="photo-6.jpg" alt="在山岩边拍摄的人像照片" />
+                <img src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/photo-6.jpg" alt="在山岩边拍摄的人像照片" />
               </button>
             </div>
           </article>
@@ -1654,7 +1610,7 @@
           <p class="section-subtitle reveal" data-edit-key="faith_subtitle">拜仁慕尼黑</p>
 
           <article class="card faith-panel reveal">
-            <img class="faith-bg-logo" src="bayern-crest-bg.png" alt="拜仁慕尼黑队徽背景图案" />
+            <img class="faith-bg-logo" src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/bayern-crest-bg.png" alt="拜仁慕尼黑队徽背景图案" />
             <div class="faith-layout">
               <div class="faith-copy">
                 <h3 data-edit-key="faith_heading">我的信仰</h3>
@@ -1697,7 +1653,7 @@
               <span class="timeline-dot" aria-hidden="true"></span>
               <article class="card timeline-card">
                 <div class="timeline-company">
-                  <img class="timeline-logo bytedance" src="logo-bytedance-cut.png" alt="字节跳动 logo" />
+                  <img class="timeline-logo bytedance" src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/logo-bytedance-cut.png" alt="字节跳动 logo" />
                   <div class="timeline-heading">
                     <h3 data-edit-key="experience_0_title">字节跳动｜抖音电商行业产品经理</h3>
                   </div>
@@ -1712,7 +1668,7 @@
               <span class="timeline-dot" aria-hidden="true"></span>
               <article class="card timeline-card">
                 <div class="timeline-company">
-                  <img class="timeline-logo jd" src="logo-jd-icon.png" alt="京东图案 logo" />
+                  <img class="timeline-logo jd" src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/logo-jd-icon.png" alt="京东图案 logo" />
                   <div class="timeline-heading">
                     <h3 data-edit-key="experience_1_title">京东零售｜业务产品经理（AI 客服产品）</h3>
                   </div>
@@ -1727,7 +1683,7 @@
               <span class="timeline-dot" aria-hidden="true"></span>
               <article class="card timeline-card">
                 <div class="timeline-company">
-                  <img class="timeline-logo alibaba" src="logo-alibaba-icon.png" alt="阿里巴巴图案 logo" />
+                  <img class="timeline-logo alibaba" src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/logo-alibaba-icon.png" alt="阿里巴巴图案 logo" />
                   <div class="timeline-heading">
                     <h3 data-edit-key="experience_2_title">阿里巴巴淘天集团｜产品运营</h3>
                   </div>
@@ -1742,7 +1698,7 @@
               <span class="timeline-dot" aria-hidden="true"></span>
               <article class="card timeline-card">
                 <div class="timeline-company">
-                  <img class="timeline-logo gf" src="logo-gf-icon.png" alt="广发证券图案 logo" />
+                  <img class="timeline-logo gf" src="https://cdn.jsdelivr.net/gh/yutongliang38-byte/my-image-bed@main/images/logo-gf-icon.png" alt="广发证券图案 logo" />
                   <div class="timeline-heading">
                     <h3 data-edit-key="experience_3_title">广发证券｜投行部股权承做</h3>
                   </div>
